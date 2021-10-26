@@ -105,12 +105,6 @@ footer {
     padding: 5px;
 }
 
-#developed {
-    color: #dcdbe9;
-    padding-bottom: 5px;
-    font-size: 0.9rem;
-}
-
 @media screen and (max-width:650px) {
     .logo {
         font-size: 1.45rem;
