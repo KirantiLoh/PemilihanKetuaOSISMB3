@@ -31,7 +31,7 @@
     background-color: #4940b1;
     color: #fff;
     text-align: center;
-    margin: 20px 10px;
+    margin: 20px auto;
     padding: 20px;
     border-radius: 10px;
 }
@@ -86,7 +86,7 @@
     right: 170px;
 }
 
-@media screen and (max-width:600px) {
+@media screen and (max-width:650px) {
     .title {
         font-size: 1.5rem;
     }
