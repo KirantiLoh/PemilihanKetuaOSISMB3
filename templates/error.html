@@ -1,0 +1,18 @@
+{% extends "base.html" %} {% load static %} {% block title %} | Error {% endblock title %} {% block css_files %}
+<link rel="stylesheet" href="{% static 'css/vote.css' %}"> {% endblock css_files %} {% block content %}
+<div class="messages">
+    <h1>{{message}}, you'll be redirected to the home page in <span id='sec'>5</span> second</h1>
+</div>
+
+{% endblock content %} {% block js_files %}
+<script>
+    setInterval(function() {
+        sec = parseInt(document.getElementById('sec').innerHTML);
+        sec -= 1;
+        document.getElementById('sec').innerHTML = sec;
+    }, 1000);
+    setTimeout(function() {
+        window.location.href = '{% url "Home" %}';
+    }, 5000);
+</script>
+{% endblock js_files %}

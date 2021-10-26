@@ -1,0 +1,33 @@
+{% extends "base.html" %} {% load static %} {% block title %} | Vote {% endblock title %} {% block css_files %}
+<link rel="stylesheet" href="{% static 'css/vote.css' %}"> {% endblock css_files %} {% block content %}
+<div class="hero">
+    <h1 class="title">Election of Student Council's President and Vice President 2021/2022</h1>
+    <ul class="candidates">
+        {% for candidate in candidates %}
+        <form method="post" class="candidate-form">
+            {% csrf_token %}
+            <img src="{{candidate.image.url}}" class='candidate-img'>
+            <p>President</p>
+            <h2 class="candidate-name">{{candidate.ketua}}</h2>
+            <p>Vice President</p>
+            <h2 class="candidate-name">{{candidate.wakil}}</h2>
+            <input type="radio" name="k{{candidate.id}}" class='checkbox' id='id_vote{{candidate.id}}' onchange="form_submit(this.form, '{{candidate}}', '{{candidate.id}}');">
+            <label for="id_vote{{candidate.id}}" class="vote-btn">Pick</label>
+        </form>
+        {% endfor %}
+    </ul>
+</div>
+{% block js_files %}
+<script>
+    function form_submit(form, candidate, id_chk) {
+        radio = document.getElementById('id_vote' + id_chk)
+        confirmation = confirm('You chose ' + candidate + ', Do you wish to vote for them?');
+        if (confirmation === true) {
+            form.submit();
+        } else {
+            radio.checked = false;
+            return false;
+        }
+    }
+</script>
+{% endblock js_files %} {% endblock content %}

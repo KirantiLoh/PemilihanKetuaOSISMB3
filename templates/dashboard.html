@@ -1,0 +1,10 @@
+{% extends "admin/base.html" %} {% load static %} {% block title %} Mutiara Bangsa 3 | Dashboard {% endblock title %} {% block branding %} {% block extrastyle %}
+<link rel="shortcut icon" href='{% static "logo.ico" %}' type="image/x-icon">
+<link rel="stylesheet" href='{% static "css/admin/admin.css" %}'>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"> {% endblock extrastyle %}
+<h1 class="head">
+    <a href='{% url "Home" %}'><img src="{% static 'img/LOGO_MB3.png' %}" alt=""> Mutiara Bangsa 3</a>
+</h1>
+{% endblock branding %} {% block userlinks %} {% endblock userlinks %} {% block content %} {% endblock content %} {% block footer %}
+<p><small>Coded and Designed by Maurice Yang</small></p>
+{% endblock footer %}

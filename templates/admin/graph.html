@@ -1,0 +1,49 @@
+{% extends "admin/base.html" %} {% load static %} {% block extrastyle %}
+<link rel="stylesheet" href='{% static "css/admin/graph.css" %}'> {% endblock extrastyle %} {% block content %}
+<h1 class='title'>Result of the Election</h1>
+<div class="container">
+    <canvas id="result-chart" width="500" height="500"></canvas>
+</div>
+
+<script>
+    count = Array.from(document.getElementsByClassName('vote-count'))
+    const result_chart = document.getElementById('result-chart').getContext('2d');
+    const chart = new Chart(result_chart, {
+        type: 'bar',
+        data: {
+            labels: [
+                {% for candidate in candidates %}"{{candidate.ketua}} & {{candidate.wakil}} - {{candidate.total_vote}}",{% endfor %}
+            ],
+            datasets: [{
+                label: 'Vote Count',
+                data: [{% for candidate in candidates %}{{candidate.total_vote}},{% endfor %}],
+                backgroundColor: [
+                    '#4940b1',
+                    '#4940b1',
+                    '#4940b1'
+                ],
+                borderColor: [
+                    '#fff',
+                    '#fff',
+                    '#fff',
+                ]
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                yAxes: [{
+                    display: true,
+                    ticks: {
+                        beginAtZero: true,
+                        min: 0,
+                        max: {{total}},
+                        stepSize: 1 
+                    }
+                }]
+            }
+        }
+    })
+</script>
+{% endblock content %}

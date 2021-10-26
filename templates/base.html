@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mutiara Bangsa 3 {% block title %} {% endblock title %} </title>
+    <link rel="shortcut icon" href='{% static "logo.ico" %}' type="image/x-icon">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <link rel="stylesheet" href=' {% static "css/style.css" %} '> {% block css_files %} {% endblock css_files %}
+</head>
+
+<body>
+    <header>
+        <h1 class="logo">
+            <a href='{% url "Home" %}'><img src="{% static 'img/LOGO_MB3.png' %}" alt=""> Mutiara Bangsa 3</a>
+        </h1>
+        <input type="checkbox" id="chk">
+        <ul class="navlinks">
+            <li class="inner-logo">
+                <h1 class="logo">
+                    <a href='{% url "Home" %}'><img src="{% static 'img/LOGO_MB3.png' %}" alt=""> Mutiara Bangsa 3</a>
+                </h1>
+            </li>
+            <li><a href='{% url "Vote" %}'><i class="fas fa-vote-yea"></i> Vote</a></li>
+            {% if request.user.is_authenticated %} {% if user.is_superuser %}
+            <li><a href='{% url "admin:index" %}'><i class="fas fa-server"></i> Dashboard</a></li>
+            {% else %}
+            <li><i class="fas fa-user"></i> {{profile | capfirst}}</li>
+            {% endif %} {% else %}
+            <li><a href='{% url "Login" %}'><i class="fas fa-sign-in-alt"></i> Login</a></li>
+            {% endif %}
+            <label for="chk" class='hide-menu-btn'><i class="fas fa-times"></i></label>
+        </ul>
+        <label for="chk" class="show-menu-btn"><i class="fas fa-bars"></i></label>
+    </header>
+    {% block content %} {% endblock content %}
+    <footer>
+        <p id='copyright'><small>&copy; Copyright {% now "Y" %}, SHS Mutiara Bangsa 3</small></p>
+        <p id='developed'><small>Developed by Maurice Yang</small></p>
+    </footer>
+    <script src='{% static "js/script.js" %}'></script>
+    {% block js_files %} {% endblock js_files %}
+</body>
+
+</html>

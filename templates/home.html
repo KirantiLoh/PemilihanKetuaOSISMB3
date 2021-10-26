@@ -1,0 +1,41 @@
+{% extends "base.html" %} {% load static %} {% block title %} | Home {% endblock title %} {% block css_files %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}"> {% endblock css_files %} {% block content %}
+<div class="hero">
+    <img src='{% static "img/1.jpg" %}' alt="">
+    <div class="intro">
+        <h1>Mutiara Bangsa 3</h1>
+        <p>Election of Student Council's President and Vice President 2021/2022</p>
+        <div class="buttons">
+            <a href='{% url "Vote" %}' id="vote-btn">Pick A Candidate</a>
+            <a href='#candidates' id="learn-more-btn">Learn More</a>
+        </div>
+    </div>
+</div>
+<div id="candidates">
+    <h1 class="title">Meet The Candidates</h1>
+    <ol class="candidates">
+        {% for candidate in candidates %}
+        <li class="candidate">
+            <img src="{{candidate.image.url}}" class='candidate-img'>
+            <p>President</p>
+            <h2 class="candidate-name">{{candidate.ketua}}</h2>
+            <p>Vice President</p>
+            <h2 class="candidate-name">{{candidate.wakil}}</h2>
+            <!--<a href='{% url "Home" %}' class='candidate-learn-more-btn'>Learn More</a>-->
+        </li>
+        {% endfor %}
+    </ol>
+</div>
+<div class="reasons-container">
+    <img src='{% static "img/girl_think.png" %}' alt="">
+    <div class="reasons">
+        <h2>Why We Have To Choose President and Vice President of Student Council?</h2>
+        <ol>
+            <li>Achieving the goals of coaching and developing students in line with the school's vision and mission</li>
+            <li>Develop students' abilities both in the field of talent and social</li>
+            <li>Honing the Ability to Work Together</li>
+        </ol>
+    </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,158 @@
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.hero img {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    position: absolute;
+    z-index: -1;
+    filter: brightness(0.5);
+}
+
+.intro {
+    color: #fff;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.intro h1 {
+    font-size: 5rem;
+}
+
+.intro p {
+    color: rgb(240, 240, 240);
+    margin: 10px auto;
+}
+
+.buttons {
+    margin: 10px;
+}
+
+#vote-btn {
+    border: 3px solid#4940b1;
+    background-color: #4940b1;
+    color: #fff;
+    margin: 5px;
+    padding: 10px 20px;
+    border-radius: 3px;
+    transition: .4s ease-in-out;
+}
+
+#vote-btn:hover {
+    box-shadow: 4px 4px 0 0 #282361;
+}
+
+#learn-more-btn {
+    border: 3px solid#ffffff;
+    color: rgb(255, 255, 255);
+    margin: 5px;
+    padding: 10px 20px;
+    border-radius: 3px;
+    transition: .4s ease-in-out;
+}
+
+#candidates {
+    scroll-padding-top: 8vh;
+    width: 100%;
+}
+
+.title {
+    text-align: center;
+    margin: 20px auto;
+}
+
+.candidates {
+    list-style: none;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.candidate {
+    width: 30%;
+    background-color: #4940b1;
+    color: #fff;
+    text-align: center;
+    margin: 20px 10px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.candidate-img {
+    border-radius: 20%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.candidate-learn-more-btn {
+    display: block;
+    margin: 10px auto;
+    padding: 10px 20px;
+    background-color: transparent;
+    color: #fff;
+    border: 3px #fff solid;
+}
+
+.reasons-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.reasons-container img {
+    width: 150px;
+    list-style-position: inside;
+    object-fit: cover;
+}
+
+.reasons {
+    margin: 5px 10px;
+}
+
+.reasons h2 {
+    margin: 10px 0;
+}
+
+.reasons ol {
+    line-height: 1.4;
+}
+
+.reasons ol li {
+    display: list-item;
+    max-width: 60ch;
+    margin-left: 15px;
+}
+
+@media screen and (max-width:600px) {
+    .intro h1 {
+        font-size: 2.5rem;
+    }
+    .intro {
+        flex-direction: column;
+    }
+    .candidates {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .candidate {
+        width: 90%;
+    }
+    .reasons-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .buttons {
+        display: flex;
+    }
+}
