@@ -32,7 +32,7 @@ SECRET_KEY = config("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["mb3-pemilihanketuaosis.herokuapp.com/", "127.0.0.1:8000"]
 
 
 # Application definition
