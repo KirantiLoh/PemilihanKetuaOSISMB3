@@ -1,9 +1,10 @@
 from django.utils.timezone import now
 from django.db import models
+from cloudinary.models import CloudinaryField
 
 # Create your models here.
 class Candidate(models.Model):
-    image = models.ImageField(upload_to='candidates')
+    image = CloudinaryField('image')
     ketua = models.CharField(max_length=100)
     wakil = models.CharField(max_length=100)
     visi = models.TextField()
