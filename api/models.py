@@ -12,5 +12,8 @@ class Candidate(models.Model):
     total_vote = models.PositiveIntegerField(default=0)
     date_added = models.DateField(default=now)
 
+    class Meta:
+        ordering = ['-date_added']
+
     def __str__(self):
         return f"Ketos : {self.ketua} & Waketos : {self.wakil}"
