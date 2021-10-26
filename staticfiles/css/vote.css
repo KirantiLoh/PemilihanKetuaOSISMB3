@@ -17,16 +17,6 @@
 }
 
 .candidate-form {
-    width: max-content;
-    background-color: #4940b1;
-    color: #fff;
-    text-align: center;
-    margin: 20px 10px;
-    padding: 20px;
-    border-radius: 10px;
-}
-
-.candidate {
     width: 30%;
     background-color: #4940b1;
     color: #fff;
@@ -95,7 +85,7 @@
         justify-content: center;
         align-items: center;
     }
-    .candidate {
+    .candidate-form {
         width: 90%;
     }
 }
