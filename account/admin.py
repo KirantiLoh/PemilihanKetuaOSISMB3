@@ -17,6 +17,10 @@ class StudentAdmin(admin.ModelAdmin):
         if request.method == "POST":
             form = CSVUploadForm(request.POST, request.FILES)
             if form.is_valid():
+                delimiter = form.cleaned_data['delimiter']
+                csv_delimiter = ",;|"
+                if delimiter not in csv_delimiter:
+                    return redirect('admin:index')
                 csv_file = form.cleaned_data['csv_file']
                 if not csv_file.name.endswith('.csv'):
                     messages.warning(request, 'The File Format is Wrong!')
@@ -26,7 +30,8 @@ class StudentAdmin(admin.ModelAdmin):
                 for data in csv_data[1:]:
                     if len(data) <= 2:
                         continue
-                    fields = data.split(',')
+                    fields = data.split(delimiter)
+                    print(fields)
                     user = User.objects.update_or_create(
                         username = str(fields[1].strip(' "')),
                         defaults= {
@@ -45,7 +50,7 @@ class StudentAdmin(admin.ModelAdmin):
                         }
                         
                     )
-                return redirect('admin:account')
+                return redirect('admin:index')
         return render(request, 'admin/add_student.html', {'form':form})
 
     def get_urls(self):
@@ -65,6 +70,10 @@ class TeacherAdmin(ModelAdmin):
         if request.method == "POST":
             form = CSVUploadForm(request.POST, request.FILES)
             if form.is_valid():
+                delimiter = form.cleaned_data['delimiter']
+                csv_delimiter = ",;|"
+                if delimiter not in csv_delimiter:
+                    return redirect('admin:index')
                 csv_file = form.cleaned_data['csv_file']
                 if not csv_file.name.endswith('.csv'):
                     messages.warning(request, 'The File Format is Wrong!')
@@ -74,7 +83,8 @@ class TeacherAdmin(ModelAdmin):
                 for data in csv_data[1:]:
                     if len(data) <= 2:
                         continue
-                    fields = data.split(',')
+                    fields = data.split(delimiter)
+                    print(fields)
                     user = User.objects.update_or_create(
                         username = str(fields[1].strip(' "')),
                         defaults= {
@@ -92,7 +102,7 @@ class TeacherAdmin(ModelAdmin):
                             'mengajar' : fields[5].strip(' "')
                         }
                     )
-                return redirect('admin:account')
+                return redirect('admin:index')
         return render(request, 'admin/add_student.html', {'form':form})
 
     def get_urls(self):

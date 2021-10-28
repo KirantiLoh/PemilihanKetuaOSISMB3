@@ -6,4 +6,5 @@ class LoginForm(forms.Form):
     password = forms.CharField(max_length = 100, widget=forms.PasswordInput())
 
 class CSVUploadForm(forms.Form):
+    delimiter = forms.CharField(max_length = 1)
     csv_file = forms.FileField()
