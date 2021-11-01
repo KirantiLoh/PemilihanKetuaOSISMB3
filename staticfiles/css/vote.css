@@ -20,6 +20,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-direction: column;
     width: 30%;
     background-color: #4940b1;
     color: #fff;
