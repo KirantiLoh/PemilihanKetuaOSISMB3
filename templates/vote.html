@@ -7,10 +7,12 @@
         <form method="post" class="candidate-form">
             {% csrf_token %}
             <img src="{{candidate.image.url}}" class='candidate-img'>
-            <p>President</p>
-            <h2 class="candidate-name">{{candidate.ketua}}</h2>
-            <p>Vice President</p>
-            <h2 class="candidate-name">{{candidate.wakil}}</h2>
+            <div class="candidate-details">
+                <p>President</p>
+                <h2 class="candidate-name">{{candidate.ketua}}</h2>
+                <p>Vice President</p>
+                <h2 class="candidate-name">{{candidate.wakil}}</h2>
+            </div>
             <input type="radio" name="k{{candidate.id}}" class='checkbox' id='id_vote{{candidate.id}}' onchange="form_submit(this.form, '{{candidate}}', '{{candidate.id}}');">
             <label for="id_vote{{candidate.id}}" class="vote-btn">Pick</label>
         </form>
