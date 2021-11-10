@@ -36,9 +36,9 @@
                 <a href="{{ site_url }}">{% translate 'View site' %}</a> / {% endif %} {% if user.is_active and user.is_staff %} {% url 'django-admindocs-docroot' as docsroot %} {% if docsroot %}
                 <a href="{{ docsroot }}">{% translate 'Documentation' %}</a> / {% endif %} {% endif %} {% if user.has_usable_password %}
                 <a href="{% url 'admin:password_change' %}">{% translate 'Change password' %}</a> / {% endif %}
-                <a href="https://mb3-pemilihanketuaosis.herokuapp.com/admin/account/student/add_student">Add Student</a> /
-                <a href="https://mb3-pemilihanketuaosis.herokuapp.com/admin/account/teacher/add_teacher">Add Teacher</a> /
-                <a href="https://mb3-pemilihanketuaosis.herokuapp.com/admin/api/candidate/result">Results</a> /
+                <a href="https://mb3-evoting.herokuapp.com/admin/account/student/add_student">Add Student</a> /
+                <a href="https://mb3-evoting.herokuapp.com/admin/account/teacher/add_teacher">Add Teacher</a> /
+                <a href="https://mb3-evoting.herokuapp.com/admin/api/candidate/result">Results</a> /
                 <a href="{% url 'admin:logout' %}">{% translate 'Log out' %}</a> {% endblock %}
             </div>
             {% endif %} {% endblock %} {% block nav-global %}{% endblock %}
