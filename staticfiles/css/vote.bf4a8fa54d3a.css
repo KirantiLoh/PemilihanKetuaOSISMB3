@@ -1,0 +1,98 @@
+.hero {
+    width: 100%;
+    padding-top: 12vh;
+}
+
+.title {
+    text-align: center;
+    margin: 10px 20px;
+}
+
+.candidates {
+    list-style: none;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.candidate-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 30%;
+    background-color: #4940b1;
+    color: #fff;
+    text-align: center;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.candidate-img {
+    border-radius: 20%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.checkbox {
+    display: none;
+}
+
+.vote-btn {
+    display: block;
+    margin-top: 10px;
+    font-size: 2rem;
+    font-weight: 900;
+    width: 100%;
+    padding: 10px 30px;
+    border: 3px #fff solid;
+    border-radius: 3px;
+    transition: .4s linear;
+    position: relative;
+    cursor: pointer;
+}
+
+.vote-btn::before,
+.vote-btn::after {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 3px;
+    background-color: #4940b1;
+    transform: skewX(30deg);
+    transition: .4s linear;
+}
+
+.vote-btn::before {
+    left: 10px;
+    top: -3px;
+}
+
+.vote-btn::after {
+    right: 10px;
+    bottom: -3px;
+}
+
+.vote-btn:hover::before {
+    left: 170px;
+}
+
+.vote-btn:hover::after {
+    right: 170px;
+}
+
+@media screen and (max-width:650px) {
+    .title {
+        font-size: 1.5rem;
+    }
+    .candidates {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .candidate-form {
+        width: 90%;
+    }
+}
