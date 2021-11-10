@@ -8,7 +8,9 @@ from django.core.exceptions import ObjectDoesNotExist
 
 # Create your views here.
 def home_view(request):
-    candidates = Candidate.objects.all()
+    candidates = Candidate.objects.filter(date_added__day = datetime.now().day)
+    if len(candidates) <= 1:
+        candidates = None
     profile = None
     if request.user.is_authenticated:
         try:

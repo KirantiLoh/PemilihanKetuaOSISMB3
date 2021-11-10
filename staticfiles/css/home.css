@@ -103,6 +103,15 @@
     border: 3px #fff solid;
 }
 
+.no-voting {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+}
+
 .reasons-container {
     display: flex;
     align-items: center;

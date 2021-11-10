@@ -11,6 +11,7 @@
         </div>
     </div>
 </div>
+{% if candidates %}
 <div id="candidates">
     <h1 class="title">Meet The Candidates</h1>
     <ol class="candidates">
@@ -26,6 +27,12 @@
         {% endfor %}
     </ol>
 </div>
+{% else %}
+<div class="no-voting">
+    <h1>Currently, there's no voting needed to be done</h1>
+</div>
+{% endif %}
+
 <div class="reasons-container">
     <img src='{% static "img/girl_think.png" %}' alt="">
     <div class="reasons">
