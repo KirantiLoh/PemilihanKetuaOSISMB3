@@ -56,7 +56,7 @@ def logout_view(request):
 
 @login_required(login_url='Login')
 def set_voted_to_false(request):
-    if request.user.is_superuser():
+    if request.user.is_superuser:
         students = Student.objects.all()
         teachers = Teacher.objects.all()
         for student in students:
