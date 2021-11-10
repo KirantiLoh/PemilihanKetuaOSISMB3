@@ -38,6 +38,7 @@
                 <a href="{% url 'admin:password_change' %}">{% translate 'Change password' %}</a> / {% endif %}
                 <a href="https://mb3-evoting.herokuapp.com/admin/account/student/add_student">Add Student</a> /
                 <a href="https://mb3-evoting.herokuapp.com/admin/account/teacher/add_teacher">Add Teacher</a> /
+                <a href="{% url 'Set Voted To False' %}">Set Voted To False</a> /
                 <a href="https://mb3-evoting.herokuapp.com/admin/api/candidate/result">Results</a> /
                 <a href="{% url 'admin:logout' %}">{% translate 'Log out' %}</a> {% endblock %}
             </div>

@@ -60,7 +60,8 @@ def error_view(request, id):
         "You haven't voted",
         "You have voted before, if you haven't, please contact the admin",
         "Your account doesn't exist, re check your username and password or contact the admin...",
-        "The candidate you chose isn't for this election, please vote again"
+        "The candidate you chose isn't for this election, please vote again",
+        "You're not admin, you cannot access this page",
         "You have tampered with the voting fuction, your last vote isn't valid, please vote again",
     ]
     return render(request, "error.html", {'message':messages[id-1]})
