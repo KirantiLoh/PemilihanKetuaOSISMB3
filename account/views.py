@@ -27,11 +27,14 @@ def login_view(request):
                             login(request, user)
                             return redirect('Vote')
                     except ObjectDoesNotExist:
-                        teacher = Teacher.objects.get(user = user)
-                        if teacher.voted == False:
-                            login(request, user)
-                            return redirect("Vote")
-                        return redirect("Error", id = 2)
+                        try:
+                            teacher = Teacher.objects.get(user = user)
+                            if teacher.voted == False:
+                                login(request, user)
+                                return redirect("Vote")
+                            return redirect("Error", id = 2)
+                        except ObjectDoesNotExist:
+                            return redirect("Error", id = 3)
     return render(request, "login.html", {'form':form})
 
 @login_required(login_url='Login')

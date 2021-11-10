@@ -1,7 +1,7 @@
 {% extends "base.html" %} {% load static %} {% block title %} | Vote {% endblock title %} {% block css_files %}
-<link rel="stylesheet" href="{% static 'css/vote.css' %}"> {% endblock css_files %} {% block content %}
+<link rel="stylesheet" href="{% static 'css/vote.css' %}"> {% endblock css_files %} {% block content %} {% if candidates %}
 <div class="hero">
-    <h1 class="title">Election of Student Council's President and Vice President 2021/2022</h1>
+    <h1 class="title">Voting Page</h1>
     <ul class="candidates">
         {% for candidate in candidates %}
         <form method="post" class="candidate-form">
@@ -19,7 +19,11 @@
         {% endfor %}
     </ul>
 </div>
-{% block js_files %}
+{% else %}
+<div class="messages">
+    <h1>The voting has ended..., you'll be redirected to the home page in <span id='sec'>5</span> second</h1>
+</div>
+{% endif %} {% block js_files %} {% if candidates %}
 <script>
     function form_submit(form, candidate, id_chk) {
         radio = document.getElementById('id_vote' + id_chk)
@@ -32,4 +36,17 @@
         }
     }
 </script>
-{% endblock js_files %} {% endblock content %}
+{% else %}
+<script>
+    let handle = setInterval(function() {
+        sec = parseInt(document.getElementById('sec').innerHTML);
+        sec -= 1;
+        document.getElementById('sec').innerHTML = sec;
+    }, 1000);
+    setTimeout(function() {
+        clearInterval(handle)
+        handle = 0
+        window.location.href = '{% url "Home" %}';
+    }, 5000);
+</script>
+{% endif %} {% endblock js_files %} {% endblock content %}

@@ -25,8 +25,11 @@ def vote_view(request):
         profile = Teacher.objects.get(user=request.user)
     if profile.voted:
         return redirect("Error", id=2)
-    cur_date = datetime.now().year
-    candidates = Candidate.objects.filter(date_added__year = cur_date)
+    cur_date = datetime.now()
+    cur_year = cur_date.year
+    candidates = Candidate.objects.filter(date_added__day = cur_date.day)
+    if len(candidates) <= 1:
+        candidates = None
     if request.method == 'POST':
         datas = request.POST
         choice = ''
@@ -36,6 +39,10 @@ def vote_view(request):
         choice = int(choice)
         try:
             candidate = Candidate.objects.get(id=choice)
+            candidate_date = candidate.date_added
+            diff = cur_date - candidate_date
+            if diff.days > 1:
+                return redirect("Error", id = 4)
             candidate.total_vote += 1
             candidate.save()
             profile.voted = True
@@ -52,6 +59,8 @@ def error_view(request, id):
     messages = [
         "You haven't voted",
         "You have voted before, if you haven't, please contact the admin",
+        "Your account doesn't exist, re check your username and password or contact the admin...",
+        "The candidate you chose isn't for this election, please vote again"
         "You have tampered with the voting fuction, your last vote isn't valid, please vote again",
     ]
     return render(request, "error.html", {'message':messages[id-1]})

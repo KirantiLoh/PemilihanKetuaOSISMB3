@@ -6,12 +6,14 @@
 
 {% endblock content %} {% block js_files %}
 <script>
-    setInterval(function() {
+    let handle = setInterval(function() {
         sec = parseInt(document.getElementById('sec').innerHTML);
         sec -= 1;
         document.getElementById('sec').innerHTML = sec;
     }, 1000);
     setTimeout(function() {
+        clearInterval(handle)
+        handle = 0
         window.location.href = '{% url "Home" %}';
     }, 5000);
 </script>

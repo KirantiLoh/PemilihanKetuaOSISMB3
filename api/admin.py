@@ -13,7 +13,7 @@ class CandidateAdmin(admin.ModelAdmin):
     search_fields = ('ketua', 'wakil')
 
     def graph_view(self, request):
-        candidates = Candidate.objects.filter(date_added__year = datetime.now().year)
+        candidates = Candidate.objects.filter(date_added__day = datetime.now().day)
         students = Student.objects.all().count()
         teachers = Teacher.objects.all().count()
         total_vote = students + teachers
