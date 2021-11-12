@@ -1055,11 +1055,11 @@ table#change-history tbody th {
     justify-content: space-evenly;
     transition: .3s linear;
     background-color: #4940b1;
-    z-index: 3;
+    z-index: 99999;
 }
 
 #user-tools a {
-    font-size: 1.5;
+    font-size: 1.5rem;
 }
 
 #user-tools a:focus,
