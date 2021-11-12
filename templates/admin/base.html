@@ -3,6 +3,7 @@
 <html lang="{{ LANGUAGE_CODE|default:' en-us ' }}" dir="{{ LANGUAGE_BIDI|yesno:'rtl,ltr,auto' }}">
 
 <head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <title>Mutiara Bangsa 3 | Admin's Dashboard</title>
     <link rel="shortcut icon" href='{% static "logo.ico" %}' type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="{% block stylesheet %}{% static 'css/admin/base.css' %}{% endblock %}"> {% if not is_popup and is_nav_sidebar_enabled %}
@@ -30,19 +31,22 @@
                 </h1>
             </div>
             {% block usertools %} {% if has_permission %}
+            <input type="checkbox" id="chk">
+            <label for="chk" class="show-menu-btn"><i class="fas fa-bars"></i></label>
             <div id="user-tools">
                 {% block welcome-msg %} {% translate 'Welcome,' %}
                 <strong>{% firstof user.get_short_name user.get_username %}</strong>. {% endblock %} {% block userlinks %} {% if site_url %}
-                <a href="{{ site_url }}">{% translate 'View site' %}</a> / {% endif %} {% if user.is_active and user.is_staff %} {% url 'django-admindocs-docroot' as docsroot %} {% if docsroot %}
-                <a href="{{ docsroot }}">{% translate 'Documentation' %}</a> / {% endif %} {% endif %} {% if user.has_usable_password %}
-                <a href="{% url 'admin:password_change' %}">{% translate 'Change password' %}</a> / {% endif %}
-                <a href="https://mb3-evoting.herokuapp.com/admin/account/student/add_student">Add Student</a> /
-                <a href="https://mb3-evoting.herokuapp.com/admin/account/teacher/add_teacher">Add Teacher</a> /
-                <a href="{% url 'Set Voted To False' %}">Set Voted To False</a> /
-                <a href="{% url 'Set Student Voted To True' %}">Set Student Voted To True</a> /
-                <a href="{% url 'Set Teacher Voted To True' %}">Set Teacher Voted To True</a> /
-                <a href="https://mb3-evoting.herokuapp.com/admin/api/candidate/result">Results</a> /
+                <a href="{{ site_url }}">{% translate 'View site' %}</a> {% endif %} {% if user.is_active and user.is_staff %} {% url 'django-admindocs-docroot' as docsroot %} {% if docsroot %}
+                <a href="{{ docsroot }}">{% translate 'Documentation' %}</a> {% endif %} {% endif %} {% if user.has_usable_password %}
+                <a href="{% url 'admin:password_change' %}">{% translate 'Change password' %}</a> {% endif %}
+                <a href="https://mb3-evoting.herokuapp.com/admin/account/student/add_student">Add Student</a>
+                <a href="https://mb3-evoting.herokuapp.com/admin/account/teacher/add_teacher">Add Teacher</a>
+                <a href="{% url 'Set Voted To False' %}">Set Voted To False</a>
+                <a href="{% url 'Set Student Voted To True' %}">Set Student Voted To True</a>
+                <a href="{% url 'Set Teacher Voted To True' %}">Set Teacher Voted To True</a>
+                <a href="https://mb3-evoting.herokuapp.com/admin/api/candidate/result">Results</a>
                 <a href="{% url 'admin:logout' %}">{% translate 'Log out' %}</a> {% endblock %}
+                <label for="chk" class='hide-menu-btn'><i class="fas fa-times"></i></label>
             </div>
             {% endif %} {% endblock %} {% block nav-global %}{% endblock %}
         </div>
