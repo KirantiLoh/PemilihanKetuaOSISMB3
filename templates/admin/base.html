@@ -39,16 +39,16 @@
                     <strong>{% firstof user.get_short_name user.get_username %}</strong>. {% endblock %}
                 </div>
                 {% block userlinks %} {% if site_url %}
-                <a href="{{ site_url }}">{% translate 'View site' %}</a> {% endif %} {% if user.is_active and user.is_staff %} {% url 'django-admindocs-docroot' as docsroot %} {% if docsroot %}
-                <a href="{{ docsroot }}">{% translate 'Documentation' %}</a> {% endif %} {% endif %} {% if user.has_usable_password %}
-                <a href="{% url 'admin:password_change' %}">{% translate 'Change password' %}</a> {% endif %}
-                <a href="https://mb3-evoting.herokuapp.com/admin/account/student/add_student">Add Student</a>
-                <a href="https://mb3-evoting.herokuapp.com/admin/account/teacher/add_teacher">Add Teacher</a>
-                <a href="{% url 'Set Voted To False' %}">Set Voted To False</a>
-                <a href="{% url 'Set Student Voted To True' %}">Set Student Voted To True</a>
-                <a href="{% url 'Set Teacher Voted To True' %}">Set Teacher Voted To True</a>
-                <a href="https://mb3-evoting.herokuapp.com/admin/api/candidate/result">Results</a>
-                <a href="{% url 'admin:logout' %}">{% translate 'Log out' %}</a> {% endblock %}
+                <a href="{{ site_url }}"><i class="fas fa-eye"></i> {% translate 'View site' %}</a> {% endif %} {% if user.is_active and user.is_staff %} {% url 'django-admindocs-docroot' as docsroot %} {% if docsroot %}
+                <a href="{{ docsroot }}"><i class="fas fa-book"></i> {% translate 'Documentation' %}</a> {% endif %} {% endif %} {% if user.has_usable_password %}
+                <a href="{% url 'admin:password_change' %}"><i class="fas fa-unlock-alt"></i> {% translate 'Change password' %}</a> {% endif %}
+                <a href="https://mb3-evoting.herokuapp.com/admin/account/student/add_student"><i class="fas fa-user-graduate"></i> Add Student</a>
+                <a href="https://mb3-evoting.herokuapp.com/admin/account/teacher/add_teacher"><i class="fas fa-chalkboard-teacher"></i> Add Teacher</a>
+                <a href="{% url 'Set Voted To False' %}"><i class="fas fa-user-times"></i> Set Voted To False</a>
+                <a href="{% url 'Set Student Voted To True' %}"><i class="fas fa-user-check"></i>Set Student Voted To True</a>
+                <a href="{% url 'Set Teacher Voted To True' %}"><i class="fas fa-user-check"></i> Set Teacher Voted To True</a>
+                <a href="https://mb3-evoting.herokuapp.com/admin/api/candidate/result"><i class="fas fa-chart-bar"></i> Results</a>
+                <a href="{% url 'admin:logout' %}"><i class="fas fa-sign-out-alt"></i> {% translate 'Log out' %}</a> {% endblock %}
                 <label for="chk" class='hide-menu-btn'><i class="fas fa-times"></i></label>
             </div>
             {% endif %} {% endblock %} {% block nav-global %}{% endblock %}
