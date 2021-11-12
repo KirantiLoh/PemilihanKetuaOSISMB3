@@ -67,3 +67,23 @@ def set_voted_to_false(request):
             teacher.save()
         return redirect('admin:index')
     return redirect("Error", id = 5)
+
+@login_required(login_url='Login')
+def set_student_voted_to_true(request):
+    if request.user.is_superuser:
+        students = Student.objects.all()
+        for student in students:
+            student.voted = True
+            student.save()
+        return redirect('admin:index')
+    return redirect("Error", id = 5)
+
+@login_required(login_url='Login')
+def set_teacher_voted_to_true(request):
+    if request.user.is_superuser:
+        teachers = Teacher.objects.all()
+        for teacher in teachers:
+            teacher.voted = False
+            teacher.save()
+        return redirect('admin:index')
+    return redirect("Error", id = 5)
