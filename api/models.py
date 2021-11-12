@@ -16,4 +16,4 @@ class Candidate(models.Model):
         ordering = ['date_added']
 
     def __str__(self):
-        return f"Ketos : {self.ketua} & Waketos : {self.wakil}"
+        return f"Chairman : {self.ketua} & Vice Chairman : {self.wakil}"
