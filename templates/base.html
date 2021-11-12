@@ -4,9 +4,29 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="author" content="Maurice Yang">
+    <meta name="keywords" content="Mutiara, Mutiara Bangsa, Mutiara Bangsa 3, Mutiara Bangsa 3 School, SHS, SHS Mutiara, SHS Mutiara Bangsa, SHS Mutiara Bangsa 3,Voting, E-Voting, pemilihan, School, OSIS, ketos, waketos, mpk">
+    <meta name="description" content="Mutiara Bangsa 3 E-Voting Website, the perfect website for voting in every events in Mutiara Bangsa 3 School. Whether it's for Student Council, Class Representative Assembly, or Scouts, This website can provide the facility for every events that requires voting ">
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="Mutiara Bangsa 3 E-Voting">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{% url 'Home' %}">
+    <meta property="og:title" content="Mutiara Bangsa 3 E-Voting">
+    <meta property="og:description" content="Mutiara Bangsa 3 E-Voting Website, the perfect website for voting in every events in Mutiara Bangsa 3 School. Whether it's for Student Council, Class Representative Assembly, or Scouts, This website can provide the facility for every events that requires voting">
+    <meta property="og:image" content="{% static 'img/mb3-evoting.jpg' %}">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{% url 'Home' %}">
+    <meta property="twitter:title" content="Mutiara Bangsa 3 E-Voting">
+    <meta property="twitter:description" content="Mutiara Bangsa 3 E-Voting Website, the perfect website for voting in every events in Mutiara Bangsa 3 School. Whether it's for Student Council, Class Representative Assembly, or Scouts, This website can provide the facility for every events that requires voting">
+    <meta property="twitter:image" content="{% static 'img/mb3-evoting.jpg' %}">
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mutiara Bangsa 3 {% block title %} {% endblock title %} </title>
+    <title>Mutiara Bangsa 3 E-Voting {% block title %} {% endblock title %} </title>
     <link rel="shortcut icon" href='{% static "logo.ico" %}' type="image/x-icon">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <link rel="stylesheet" href=' {% static "css/style.css" %} '> {% block css_files %} {% endblock css_files %}
