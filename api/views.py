@@ -2,14 +2,15 @@ from django.core.checks import messages
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 from account.models import Student, Teacher
-from datetime import datetime
+from datetime import datetime, timedelta
 from api.models import Candidate
 from django.core.exceptions import ObjectDoesNotExist
+from django.utils import timezone
 
 # Create your views here.
 def home_view(request):
     candidates = Candidate.objects.filter(date_added__day = datetime.now().day)
-    if len(candidates) <= 1:
+    if len(candidates) < 1:
         candidates = None
     profile = None
     if request.user.is_authenticated:
@@ -27,10 +28,11 @@ def vote_view(request):
         profile = Teacher.objects.get(user=request.user)
     if profile.voted:
         return redirect("Error", id=2)
-    cur_date = datetime.now()
+    cur_date =  timezone.now().date()
+    print(type(cur_date))
     cur_year = cur_date.year
     candidates = Candidate.objects.filter(date_added__day = cur_date.day)
-    if len(candidates) <= 1:
+    if len(candidates) < 1:
         candidates = None
     if request.method == 'POST':
         datas = request.POST
@@ -42,6 +44,7 @@ def vote_view(request):
         try:
             candidate = Candidate.objects.get(id=choice)
             candidate_date = candidate.date_added
+            print(type(candidate_date))
             diff = cur_date - candidate_date
             if diff.days > 1:
                 return redirect("Error", id = 4)
