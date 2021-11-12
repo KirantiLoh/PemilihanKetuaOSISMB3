@@ -10,7 +10,7 @@ class Candidate(models.Model):
     visi = models.TextField()
     misi = models.TextField()
     total_vote = models.PositiveIntegerField(default=0)
-    date_added = models.DateField(auto_now_add=True)
+    date_added = models.DateTimeField(default=now())
 
     class Meta:
         ordering = ['date_added']

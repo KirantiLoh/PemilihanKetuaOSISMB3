@@ -28,7 +28,7 @@ def vote_view(request):
         profile = Teacher.objects.get(user=request.user)
     if profile.voted:
         return redirect("Error", id=2)
-    cur_date =  timezone.now().date()
+    cur_date =  timezone.now()
     print(type(cur_date))
     candidates = Candidate.objects.filter(date_added__day = cur_date.day)
     if len(candidates) < 1:
