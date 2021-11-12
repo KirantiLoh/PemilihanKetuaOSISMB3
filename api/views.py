@@ -29,6 +29,7 @@ def vote_view(request):
     if profile.voted:
         return redirect("Error", id=2)
     cur_date =  timezone.now().date()
+    print(type(cur_date))
     candidates = Candidate.objects.filter(date_added__day = cur_date.day)
     if len(candidates) < 1:
         candidates = None
@@ -42,7 +43,9 @@ def vote_view(request):
         try:
             candidate = Candidate.objects.get(id=choice)
             candidate_date = candidate.date_added
+            print(type(candidate_date))
             diff = cur_date - candidate_date
+            print(type(diff))
             if diff.days > 1:
                 return redirect("Error", id = 4)
             candidate.total_vote += 1
